@@ -60,6 +60,19 @@
                         <img class="img-fluid" src="{{ env('APP_URL').'/storage/'.$post->img_url }}" alt="..." />
                         {!! $post->body !!}
                     </div>
+                    <hr />
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        Comentarios:
+                        @foreach ($post->comments as $comment)
+                            <div class="card mb-3">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ $comment->user->name }}</h5>
+                                    <p class="card-text">{!! $comment->body !!}</p>
+                                    <p class="card-text"><small class="text-muted">{{ $comment->created_at->locale('es')->isoFormat('D [de] MMMM YYYY HH:mm') }}</small></p>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
                 </div>
             </div>
         </article>
